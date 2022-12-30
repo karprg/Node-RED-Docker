@@ -7,49 +7,131 @@
         "info": ""
     },
     {
-        "id": "fad250e675905c99",
-        "type": "inject",
+        "id": "0f6cccf17079e22f",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b04f0866216bc7a9",
+        "type": "http in",
         "z": "3af82246.3634ae",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 320,
-        "y": 340,
+        "name": "Hello-Request",
+        "url": "/myhello",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 310,
+        "y": 180,
         "wires": [
             [
-                "4f13212dfab921aa"
+                "8b1bdcdf6f2db325"
             ]
         ]
     },
     {
-        "id": "4f13212dfab921aa",
+        "id": "8b1bdcdf6f2db325",
+        "type": "template",
+        "z": "3af82246.3634ae",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": " <!DOCTYPE html>\n<html>\n<body>\n\n<h1>Hello World</h1>\n<p>My first paragraph.</p>\n\n</body>\n</html> ",
+        "output": "str",
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "9a2ce6218ad97180",
+                "030b542bf3d87b2e"
+            ]
+        ]
+    },
+    {
+        "id": "9a2ce6218ad97180",
+        "type": "http response",
+        "z": "3af82246.3634ae",
+        "name": "hello-resp",
+        "statusCode": "",
+        "headers": {},
+        "x": 700,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "030b542bf3d87b2e",
         "type": "debug",
         "z": "3af82246.3634ae",
         "name": "debug 1",
         "active": true,
         "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
         "statusType": "auto",
-        "x": 530,
-        "y": 380,
+        "x": 660,
+        "y": 260,
         "wires": []
+    },
+    {
+        "id": "55dd0376.f7c64c",
+        "type": "http in",
+        "z": "0f6cccf17079e22f",
+        "name": "",
+        "url": "/hello",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "c656aba7.944288"
+            ]
+        ]
+    },
+    {
+        "id": "c2380ca8.0463",
+        "type": "http response",
+        "z": "0f6cccf17079e22f",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 460,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c656aba7.944288",
+        "type": "change",
+        "z": "0f6cccf17079e22f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"text\":\"Hello\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 100,
+        "wires": [
+            [
+                "c2380ca8.0463"
+            ]
+        ]
     }
 ]
